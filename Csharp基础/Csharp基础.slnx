@@ -1,0 +1,10 @@
+<Solution>
+  <Project Path="使用和存储上的区别/使用和存储上的区别.csproj" Id="5ea56313-f6a3-4561-9362-8a99a0360c22" />
+  <Project Path="变长参数和参数默认值/变长参数和参数默认值.csproj" Id="1f6a9f51-854b-4bde-8aba-61920ae17199" />
+  <Project Path="数组/数组.csproj" Id="f7a146ae-549f-4623-bb70-71749eb47b73" />
+  <Project Path="枚举/枚举.csproj" />
+  <Project Path="枚举题目/枚举题目.csproj" Id="6d469fa4-3838-4a5e-95a5-7aa42aa2ced6" />
+  <Project Path="结构体/结构体.csproj" Id="564ff9b0-e8a6-4d66-b247-af59d5667aee" />
+  <Project Path="选择排序/选择排序.csproj" Id="6d47283b-5dfe-47c0-9640-c4dd2b647ab7" />
+  <Project Path="递归函数/递归函数.csproj" Id="fb8bd4df-e683-492a-8e32-686a1e899c9f" />
+</Solution>

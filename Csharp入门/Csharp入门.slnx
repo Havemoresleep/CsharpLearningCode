@@ -1,0 +1,19 @@
+<Solution>
+  <Project Path="cmdtest/cmdtest.csproj" Id="9bfb763a-9cfa-4f00-93b0-ebf37e87beea" />
+  <Project Path="for循环测试/for循环测试.csproj" Id="bf37b65b-6d88-4b30-86fc-345561a99efc" />
+  <Project Path="if/if.csproj" Id="340613f2-f1a9-41e8-9f8e-424e6924e9ce" />
+  <Project Path="Lesson2/Lesson2.csproj" Id="4fb211f4-fe5a-4ea6-a68f-afaeb79f8765" />
+  <Project Path="lesson3/lesson3.csproj" Id="b9488325-059b-4225-94ec-74c7d856fb3c" />
+  <Project Path="lesson4/lesson4.csproj" Id="1d6bf5e4-b771-43d2-8531-833995c2e6ad" />
+  <Project Path="switch语句/switch语句.csproj" Id="0d1a7554-5b94-4590-9468-a277584f8f2b" />
+  <Project Path="Test/Test.csproj" />
+  <Project Path="while语句/while语句.csproj" Id="1b817168-7abf-42a4-858b-5c8298d599dc" />
+  <Project Path="yichangbuhuo/yichangbuhuo.csproj" Id="a6643be7-c01e-40bd-b42f-8475e195f043" />
+  <Project Path="三目运算符/三目运算符.csproj" Id="bdb266f2-8aee-4482-b1aa-d08627dfff5d" />
+  <Project Path="位运算符/位运算符.csproj" Id="3bfe8be5-5e2f-4c10-aa1d-da9d968ae979" />
+  <Project Path="字符串拼接/字符串拼接.csproj" Id="7ad623cc-74b1-4e2b-ab6c-41c6f7faac30" />
+  <Project Path="算数运算符/算数运算符.csproj" Id="f9a73f86-10ef-4be7-9bcc-ee78250e85e4" />
+  <Project Path="转义字符/转义字符.csproj" Id="f87d7bfc-bb09-4015-87a1-fb1de1ae9315" />
+  <Project Path="逻辑运算符/逻辑运算符.csproj" Id="c7993b33-884e-4640-bcf4-588118a5deff" />
+  <Project Path="随机数/随机数.csproj" Id="1500c6c9-36ce-44d6-b05a-9dcfebe40a8e" />
+</Solution>

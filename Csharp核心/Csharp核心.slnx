@@ -1,0 +1,22 @@
+<Solution>
+  <Project Path="D:/document/Csharp/Csharp核心/万物之父和封装拆箱/万物之父和封装拆箱.csproj" Id="65259909-56ce-4a86-817d-c68a18637c13" />
+  <Project Path="D:/document/Csharp/Csharp核心/内部类和分部类/内部类和分部类.csproj" Id="4f25b354-798a-4051-92a6-00371353267e" />
+  <Project Path="D:/document/Csharp/Csharp核心/多态vob/多态vob.csproj" Id="032f2b1a-25ca-4ccd-9e6c-a65c8e7f1333" />
+  <Project Path="D:/document/Csharp/Csharp核心/封装_索引器/封装_索引器.csproj" Id="040b58bb-bfd5-460d-8d10-3167f4929aa7" />
+  <Project Path="D:/document/Csharp/Csharp核心/封装_静态类和静态构造函数/封装_静态类和静态构造函数.csproj" Id="0c5c88b7-034c-4651-a183-26eec74d8bc8" />
+  <Project Path="D:/document/Csharp/Csharp核心/成员变量和访问修饰符/成员变量和访问修饰符.csproj" />
+  <Project Path="D:/document/Csharp/Csharp核心/成员属性/成员属性.csproj" Id="22126e2b-2a86-4065-a0e1-b6cf1cd5c197" />
+  <Project Path="D:/document/Csharp/Csharp核心/成员方法/成员方法.csproj" Id="266a0553-47e0-4a91-9e06-fcad5d85fad9" />
+  <Project Path="D:/document/Csharp/Csharp核心/成员方法练习题/成员方法练习题.csproj" Id="44d69a47-ef54-4e15-a06c-a5498fecd1e0" />
+  <Project Path="D:/document/Csharp/Csharp核心/抽象类与抽象函数/抽象类与抽象函数.csproj" Id="b01d53b5-2ebb-448c-a715-0bc66928a2fd" />
+  <Project Path="D:/document/Csharp/Csharp核心/拓展方法/拓展方法.csproj" Id="6f669f5c-d53a-4a0c-9515-4d4a68bb6c94" />
+  <Project Path="D:/document/Csharp/Csharp核心/接口/接口.csproj" Id="53a5519a-d571-4baa-9dd8-7453bb960d41" />
+  <Project Path="D:/document/Csharp/Csharp核心/继承_密封类/继承_密封类.csproj" Id="3ea45f6e-21e5-40b9-be50-afb08d47c4bf" />
+  <Project Path="D:/document/Csharp/Csharp核心/继承中的构造函数/继承中的构造函数.csproj" Id="41a75f30-b428-420f-9fe4-cacc0c65b53f" />
+  <Project Path="D:/document/Csharp/Csharp核心/继承的基本规则/继承的基本规则.csproj" Id="3274aa17-15ee-42bd-bff7-29c0285b6561" />
+  <Project Path="D:/document/Csharp/Csharp核心/运算符重载/运算符重载.csproj" Id="b91feec5-4bad-43b5-8809-0ec174343d60" />
+  <Project Path="D:/document/Csharp/Csharp核心/里氏替换原则/里氏替换原则.csproj" Id="e0c37a96-f8d4-4bb2-b7ce-d9c639f8e8f1" />
+  <Project Path="D:/document/Csharp/Csharp核心/静态成员/静态成员.csproj" Id="503b8577-16ef-4e91-a78c-751e30c0b760" />
+  <Project Path="Lesson4_封装_构造函数和析构函数/封装_构造函数和析构函数.csproj" Id="569a5475-3b3b-4478-989d-141f6dc0fe69" />
+  <Project Path="tset1/test1.csproj" Id="2b61f04d-3a82-4bde-8af6-008cd48efedb" />
+</Solution>
