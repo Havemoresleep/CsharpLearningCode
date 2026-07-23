@@ -19,5 +19,7 @@
   <Project Path="D:/document/Csharp/Csharp核心/静态成员/静态成员.csproj" Id="503b8577-16ef-4e91-a78c-751e30c0b760" />
   <Project Path="Lesson4_封装_构造函数和析构函数/封装_构造函数和析构函数.csproj" Id="569a5475-3b3b-4478-989d-141f6dc0fe69" />
   <Project Path="tset1/test1.csproj" Id="2b61f04d-3a82-4bde-8af6-008cd48efedb" />
+  <Project Path="万物之父中的方法/万物之父中的方法.csproj" Id="99b50a90-a9a6-4c61-a56e-8c948adddefb" />
+  <Project Path="命名空间/命名空间.csproj" Id="105c75cf-e2d8-44d0-89df-fe2a705cbf47" />
   <Project Path="密封方法/密封方法.csproj" Id="f870b6ed-94ac-4254-8439-aa6afb51d5b9" />
 </Solution>

@@ -590,7 +590,96 @@ s.PrintInfo("world");              // 字符串：hello，信息：world
 
 ---
 
-## 五、面向对象编程
+## 五、命名空间
+
+命名空间用于组织和管理代码，避免类名冲突。类似文件系统中的文件夹。
+
+### 5.1 基本使用
+
+```csharp
+// 声明命名空间
+namespace MyGame
+{
+    class GameObject { }
+    class Player : GameObject { }
+}
+
+// 使用 using 引用命名空间
+using MyGame;
+
+// 现在可以直接使用 MyGame 下的类
+GameObject g = new GameObject();
+Player p = new Player();
+```
+
+### 5.2 同名类的处理
+
+- 同一命名空间不能有同名类
+- 不同命名空间可以有同名类
+- 如果多个引用的命名空间中有同名类，必须用全限定名指定
+
+```csharp
+namespace MyGame
+{
+    class GameObject { }
+}
+
+namespace MyGame2
+{
+    class GameObject { }  // 不同命名空间，同名 OK
+}
+
+// 使用 using 引用后，如果存在歧义，需指明出处：
+using MyGame;
+using MyGame2;
+
+// GameObject g = new GameObject();     // 编译错误：歧义
+MyGame.GameObject g1 = new MyGame.GameObject();   // 明确指定
+MyGame2.GameObject g2 = new MyGame2.GameObject();
+```
+
+### 5.3 嵌套命名空间
+
+命名空间可以包含子命名空间，用 `.` 分隔访问。
+
+```csharp
+namespace MyGame
+{
+    namespace UI
+    {
+        class Image { }
+    }
+
+    namespace Game
+    {
+        class Image { }   // 与 UI.Image 不冲突
+    }
+}
+
+// 引用嵌套命名空间
+using MyGame.UI;
+using MyGame.Game;
+
+Image uiImage = new Image();      // 来自 MyGame.UI
+Image gameImage = new Image();    // 歧义！需用全限定名
+MyGame.Game.Image img = new MyGame.Game.Image();
+```
+
+### 5.4 命名空间中类的访问修饰符
+
+| 可用修饰符 | 不可用修饰符 |
+|-----------|-------------|
+| `public` | `protected` |
+| `internal`（默认） | `private` |
+| `abstract` | `protected internal` |
+| `sealed` | `private protected` |
+| `partial` | |
+
+> 命名空间下的类默认是 `internal`，只能在同一个程序集内访问。
+
+---
+
+## 六、面向对象编程
 
 ### 5.1 类与对象、成员变量、访问修饰符
 
@@ -1091,7 +1180,7 @@ class WhitePerson : Person
 
 ---
 
-## 六、设计原则
+## 七、设计原则
 
 ### 6.1 里氏替换原则（LSP）
 
@@ -1155,9 +1244,90 @@ if (o is Son)
 }
 ```
 
+### 6.3 万物之父中的方法
+
+`object` 类提供了三类方法：静态方法、成员方法、虚方法。
+
+**静态方法：**
+
+| 方法 | 说明 |
+|------|------|
+| `Object.Equals(a, b)` | 判断两个对象是否相等（值类型比值，引用类型比引用地址） |
+| `Object.ReferenceEquals(a, b)` | 判断两个对象是否为同一引用（值类型始终返回 `false`） |
+
+```csharp
+// Equals — 静态版本
+Console.WriteLine(Object.Equals(1, 1));          // True（值类型比值）
+
+Test t = new Test();
+Test t2 = t;
+Console.WriteLine(Object.Equals(t, t2));          // True（同一引用）
+
+// ReferenceEquals — 只比较引用
+Console.WriteLine(Object.ReferenceEquals(t, t2));  // True（同一引用）
+Console.WriteLine(Object.ReferenceEquals(1, 1));   // False（值类型装箱后地址不同）
+```
+
+**成员方法：**
+
+| 方法 | 说明 |
+|------|------|
+| `GetType()` | 获取对象的运行时 `Type` 对象，用于反射 |
+| `MemberwiseClone()` | 创建**浅拷贝**：值类型字段独立复制，引用类型字段仍指向原对象 |
+
+> `MemberwiseClone()` 是 `protected` 方法，只能在类内部通过自定义方法调用。
+
+```csharp
+class Test
+{
+    public int i = 1;
+    public Test2 t2 = new Test2();
+
+    public Test Clone()
+    {
+        return MemberwiseClone() as Test;  // 浅拷贝
+    }
+}
+
+class Test2 { public int i = 2; }
+
+// 使用
+Test T = new Test();
+Test T2 = T.Clone();         // 浅拷贝
+
+// 修改克隆体
+T2.i = 20;                   // 值类型：独立副本，T.i 不受影响
+T2.t2.i = 21;                // 引用类型：共享对象，T.t2.i 也变为 21！
+
+Console.WriteLine(T.t2.i);   // 21 ← 被 T2 的修改影响
+```
+
+> **浅拷贝 vs 深拷贝**：浅拷贝只复制对象本身，引用成员仍指向同一对象；深拷贝会递归复制整个对象图。
+
+**虚方法（可 override）：**
+
+| 方法 | 说明 |
+|------|------|
+| `Equals(object)` | 实例版比较，可重写实现自定义相等逻辑 |
+| `GetHashCode()` | 获取哈希码，用于 `Dictionary`、`HashSet` 等哈希集合 |
+| `ToString()` | 返回对象的字符串表示，默认返回类型全名 |
+
+```csharp
+class Test
+{
+    public override string ToString()
+    {
+        return "原神牛逼";    // 自定义字符串表示
+    }
+}
+
+Test t = new Test();
+Console.WriteLine(t);          // 输出：原神牛逼（隐式调用 ToString()）
+```
+
 ---
 
-## 七、高级特性
+## 八、高级特性
 
 ### 7.1 运算符重载
 
