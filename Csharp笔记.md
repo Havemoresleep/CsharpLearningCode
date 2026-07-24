@@ -291,7 +291,141 @@ Console.WriteLine(str);
 Console.WriteLine("我叫{0}，今年{1}岁", "kiZz", 18);
 ```
 
-### 3.2 值类型 vs 引用类型
+**索引访问与遍历：**
+
+```csharp
+string str = "Hello, World!";
+Console.WriteLine(str[0]);           // 'H' — 索引访问，类似 Python
+
+// 转为 char 数组
+char[] chars = str.ToCharArray();
+Console.WriteLine(chars[1]);         // 'e'
+
+// 遍历每个字符
+for (int i = 0; i < str.Length; i++)
+{
+    Console.WriteLine(str[i]);
+}
+```
+
+**查找：**
+
+```csharp
+string str = "Hello, World!";
+
+// 正向查找
+int index = str.IndexOf('o');        // 4（第一个 'o' 的位置）
+index = str.IndexOf("World");        // 7（子串位置）
+index = str.IndexOf("S");            // -1（未找到）
+
+// 反向查找
+str = "我是一个字符串，我是一个字符串";
+index = str.LastIndexOf("字符串");    // 12（最后一个匹配的位置）
+```
+
+**移除与替换：**
+
+```csharp
+string str = "我是kizkiz";
+
+// 移除
+str = str.Remove(5);                 // "我是kiz"（移除索引5及之后）
+str = str.Remove(2, 3);              // "我是"（从索引2开始移除3个字符）
+
+// 替换
+str = "我是kizkiz";
+str = str.Replace("kiz", "张三");     // "我是张三张三"
+```
+
+**大小写转换：**
+
+```csharp
+string str = "Hello World";
+str = str.ToUpper();                 // "HELLO WORLD"
+str = str.ToLower();                 // "hello world"
+```
+
+**截取（Substring）：**
+
+```csharp
+string str = "Hello, World!";
+str = str.Substring(7);              // "World!"（从索引7到末尾）
+str = str.Substring(1, 5);           // "ello,"（从索引1起取5个字符）
+```
+
+> `Substring` 不能越界（out of range），截取前注意检查长度。
+
+**切割（Split）：**
+
+```csharp
+string str = "1,2,3,4,5,6,7,8,9";
+string[] parts = str.Split(',');     // 以逗号为分隔符切割
+foreach (string s in parts)
+    Console.WriteLine(s);            // 依次输出 1 到 9
+```
+
+### 3.2 StringBuilder
+
+`string` 是不可变的，每次修改（拼接、替换等）都会创建新对象，频繁操作时性能差。`StringBuilder` 位于 `System.Text` 命名空间，是**可变字符串**，适合频繁修改的场景。
+
+```csharp
+using System.Text;
+
+// 创建
+StringBuilder sb = new StringBuilder("123123123");
+StringBuilder sb2 = new StringBuilder("hello", 100);  // 指定初始容量
+
+// 容量 — 不需重新分配内存时可容纳的字符数，初始默认 16
+Console.WriteLine(sb.Capacity);
+```
+
+**增删查改替换：**
+
+| 方法 | 说明 |
+|------|------|
+| `Append(str)` | 末尾追加字符串 |
+| `AppendFormat("{0}{1}", a, b)` | 格式化追加 |
+| `Insert(index, str)` | 在指定索引处插入 |
+| `Remove(index, count)` | 从索引处移除 count 个字符 |
+| `this[index]` | 读取 / 修改指定位置字符 |
+| `Replace(old, new)` | 替换所有匹配字符串 |
+| `Clear()` | 清空内容 |
+
+```csharp
+StringBuilder sb = new StringBuilder("123123123");
+
+// 增
+sb.Append("456");                    // "123123123456"
+sb.AppendFormat("{0}{1}", 100, 999); // "123123123456100999"
+// 容量不足时自动扩容（翻倍）
+
+// 插入
+sb.Insert(3, "插入的内容");           // "123插入的内容123123456100999"
+
+// 删
+sb.Remove(3, 5);                     // 移除刚插入的5个字符
+
+// 查 / 改
+Console.WriteLine(sb[0]);            // '1'
+sb[0] = 'X';                         // 修改第一个字符
+
+// 替换
+sb.Replace("123", "ABC");            // 所有 "123" → "ABC"
+
+// 清空
+sb.Clear();
+
+// 比较
+sb.Append("123123");
+if (sb.Equals("123123"))             // 内容比较
+    Console.WriteLine("字符串相等");
+```
+
+> `StringBuilder` 的 `Equals` 比较的是内容而非引用，和 `string` 行为一致。
+
+---
+
+### 3.3 值类型 vs 引用类型
 
 这是 C# 中区分数据类型的两大类：
 
@@ -319,7 +453,7 @@ arr2 = new int[] { 1, 2, 3, 4 };
 Console.WriteLine(arr[0]);  // 999，arr 不受影响
 ```
 
-### 3.3 数组
+### 3.4 数组
 
 数组是定长的同类型元素集合。声明时必须指定类型，长度确定后不可变。
 
@@ -360,7 +494,7 @@ newArray[newArray.Length - 1] = 6;
 array = newArray;  // 指向新数组
 ```
 
-### 3.4 选择排序
+### 3.5 选择排序
 
 经典排序算法：每一轮找到未排序部分的最大（小）值，放到已排序位置。
 
@@ -385,7 +519,7 @@ for (int j = 0; j < arr.Length; j++)
 }
 ```
 
-### 3.5 随机数
+### 3.6 随机数
 
 使用 `Random` 类生成随机数。`Next(max)` 返回 `[0, max)` 范围内的整数。
 
@@ -396,7 +530,7 @@ Console.WriteLine(i);
 int damage = r.Next(5, 15);  // 5 到 14 之间
 ```
 
-### 3.6 枚举
+### 3.7 枚举
 
 `enum` 是一组命名的整数常量，默认从 0 开始递增。约定命名前缀为 `E_` 或 `E`。
 
@@ -441,7 +575,7 @@ switch (monsterType)
 }
 ```
 
-### 3.7 结构体
+### 3.8 结构体
 
 `struct` 是**值类型**（存储在栈上），适合表示轻量级数据对象。声明在 `namespace` 或 `class` 内部。
 
@@ -485,6 +619,39 @@ s1.Speak();
 // 方式2：构造函数初始化
 Student s2 = new Student(18, true, 2, "kiZoverlxrd");
 ```
+
+### 3.9 结构体与类的区别
+
+| | 结构体（`struct`） | 类（`class`） |
+|---|------|------|
+| **类型** | 值类型 | 引用类型 |
+| **存储位置** | 栈 | 堆（栈上存引用） |
+| **赋值行为** | 复制整个数据，独立副本 | 复制引用，指向同一对象 |
+| **继承** | 不能继承（隐式密封），只能实现接口 | 支持单继承 + 多接口 |
+| **默认构造函数** | 不能自定义无参构造函数 | 可以自定义无参构造函数 |
+| **析构函数** | 不允许 | 允许 |
+| **字段初始化** | 不能直接初始化实例字段 | 可以直接初始化 |
+| **适用场景** | 小型轻量数据（点、矩形、颜色） | 复杂对象、需要继承和引用语义 |
+
+```csharp
+// 值类型行为 — 赋值是独立拷贝
+struct Point { public int X; public int Y; }
+
+Point p1 = new Point { X = 1, Y = 2 };
+Point p2 = p1;
+p2.X = 100;
+Console.WriteLine(p1.X);  // 1 — p1 不受影响
+
+// 对比 class — 赋值共享引用
+class PointClass { public int X; public int Y; }
+
+PointClass c1 = new PointClass { X = 1, Y = 2 };
+PointClass c2 = c1;
+c2.X = 100;
+Console.WriteLine(c1.X);  // 100 — c1 被修改
+```
+
+> 选择原则：数据量小、频繁创建、不需要继承 → `struct`；否则用 `class`。
 
 ---
 
@@ -1108,7 +1275,53 @@ Player p = new Player();
 
 > 显式实现用于两个接口有同名方法时区分调用。调用时必须转换为对应接口类型。
 
-### 5.12 内部类与分部类
+### 5.12 抽象类与接口的区别
+
+| | 抽象类（`abstract class`） | 接口（`interface`） |
+|---|------|------|
+| **关键字** | `abstract class` | `interface` |
+| **继承** | 单继承（一个类只能继承一个抽象类） | 多实现（一个类可实现多个接口） |
+| **成员** | 可以有字段、属性、方法、构造函数等 | 只能有方法/属性/索引器/事件的声明 |
+| **方法实现** | 可以有已实现的方法和抽象方法 | 所有方法都没有实现（仅声明） |
+| **访问修饰符** | 成员可以有任意访问修饰符 | 成员隐式为 `public` |
+| **构造函数** | 可以有 | 不能有 |
+| **实例化** | 不能直接实例化 | 不能直接实例化 |
+| **适用场景** | "是什么" — 有共同基类的继承关系 | "能做什么" — 跨类的能力契约 |
+
+```csharp
+// 抽象类：定义"是什么"
+abstract class Animal
+{
+    public string Name;
+    public abstract void Speak();    // 子类必须实现
+    public void Sleep()              // 可以包含已实现的方法
+    {
+        Console.WriteLine(Name + "在睡觉");
+    }
+}
+
+// 接口：定义"能做什么"
+interface IFly
+{
+    void Fly();
+}
+interface ISwim
+{
+    void Swim();
+}
+
+// 类可以继承一个抽象类 + 实现多个接口
+class Duck : Animal, IFly, ISwim
+{
+    public override void Speak() { Console.WriteLine("嘎嘎"); }
+    public void Fly() { Console.WriteLine("鸭子飞"); }
+    public void Swim() { Console.WriteLine("鸭子游"); }
+}
+```
+
+> 选择原则：当多个类共享代码和字段 → 抽象类；当多个不相关的类需要相同行为 → 接口。
+
+### 5.13 内部类与分部类
 
 **内部类（嵌套类）**：类定义在另一个类的内部。用 `OuterClass.InnerClass` 访问。
 
@@ -1146,7 +1359,7 @@ partial class Student
 }
 ```
 
-### 5.13 密封方法
+### 5.14 密封方法
 
 `sealed override` 阻止子类进一步重写已被 `override` 的方法。
 
